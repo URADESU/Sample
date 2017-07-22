@@ -6,9 +6,5 @@ package com.example.user.sample;
 
 public class HOGE {
 
-     String hoge = "aiueo";
-     String hogehoge="dlkfsaj";
-     String hogehogehoge= "wtf";
-     //aaaa
 
 }
