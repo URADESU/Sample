@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- durationでアニメーションの時間を指定(単位：ミリ秒)(この場合は0.7秒) -->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+android:duration="600" >
+
+<!--
+        alphaで透過率を指定する
+       fromAlpha：開始透明度
+       toAlpha：終了透明度
+       範囲（透明0.0〜1.0不透明）
+-->
+<alpha
+    android:fromAlpha="0.0"
+    android:toAlpha="1.0" />
+
+<!--
+       translateで左から右へ移動させる
+       fromXDelta：開始位置X座標
+       fromYDelta：開始位置Y座標
+       toXDelta：終了位置X座標
+    toYDelta：終了位置Y座標
+-->
+<translate
+    android:fromXDelta="-100%"
+    android:fromYDelta="0"
+    android:toXDelta="0"
+    android:toYDelta="0" />
+
+</set>
