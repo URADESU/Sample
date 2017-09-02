@@ -1,12 +1,11 @@
 package com.example.user.sample;
 
-import com.example.user.sample.R;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class Fragment3 extends Fragment {
 
@@ -14,7 +13,14 @@ public class Fragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fragment3, null);
+        Bundle args = getArguments();
+        int selected = args.getInt("selected");
+
+        View view = inflater.inflate(R.layout.fragment_fragment3, container, false);
+        TextView tv = (TextView)view.findViewById(R.id.textView3);
+        tv.setText(String.valueOf(selected + 1) + "番が選択されました。");
+
+        return view;
     }
 
 }
