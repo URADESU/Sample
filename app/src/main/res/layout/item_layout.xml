@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- リスト単体のレイアウト -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutBase"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/txtBase"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="2dp"
+        android:background="#666666"
+        android:gravity="center_vertical"
+        android:padding="6dp"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</LinearLayout>
