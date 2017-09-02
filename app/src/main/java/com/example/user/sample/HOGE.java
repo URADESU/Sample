@@ -9,6 +9,6 @@ public class HOGE {
      String hoge = "aiueo";
      String hogehoge="dlkfsaj";
      String hogehogehoge= "wtf";
-     //aaaa
+     //9/2テスト
 
 }
