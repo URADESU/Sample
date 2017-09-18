@@ -18,9 +18,9 @@ public class Fragment3 extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_fragment3, container, false);
         TextView tv = (TextView)view.findViewById(R.id.textView3);
-        tv.setText(String.valueOf(selected) + "番が選択されました。");
+        tv.setText(String.valueOf(selected + 1) + "番が選択されました。");
 
-        return inflater.inflate(R.layout.fragment_fragment3, null);
+        return view;
     }
 
 }

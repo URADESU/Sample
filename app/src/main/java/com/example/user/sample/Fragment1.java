@@ -31,10 +31,10 @@ public class Fragment1 extends Fragment {
 
 
         //リストアイテムのラベルを格納する ArrayListをインスタンス化
-        ArrayList<String>labelList=new ArrayList<>();
+        final ArrayList<String>labelList = new ArrayList<>();
 
         //「List Item " "」を20個リストに追加
-        for(int i=1;i<=20;i++){
+        for(int i = 1; i <= 20; i++){
             labelList.add("List Item"+i);
         }
 
@@ -47,6 +47,7 @@ public class Fragment1 extends Fragment {
 
         //リストにAdapterをセット
         lv.setAdapter(mAdapter);
+
 
 
         //リストが選択された時の処理
