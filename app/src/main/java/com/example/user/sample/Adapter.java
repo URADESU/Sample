@@ -9,6 +9,7 @@ public class Adapter
         extends FragmentStatePagerAdapter {
 
     public Adapter(FragmentManager fm) {
+
         super(fm);
     }
 
@@ -21,11 +22,6 @@ public class Adapter
             default:
                 return new Fragment2();
 
-//
-//            case 1:
-//                return new Fragment2();
-//            default:
-//                return new Fragment3();
         }
 
     }
