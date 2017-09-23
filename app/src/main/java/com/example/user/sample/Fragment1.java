@@ -48,14 +48,11 @@ public class Fragment1 extends Fragment {
         //リストにAdapterをセット
         lv.setAdapter(mAdapter);
 
-
-
         //リストが選択された時の処理
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
 
                 Fragment3 fg3 = new Fragment3();
                 Bundle bundle = new Bundle();
@@ -64,8 +61,11 @@ public class Fragment1 extends Fragment {
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
+                /* フラグメント置き換え時のアニメーション設定 */
+                transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
+                        R.anim.slide_in_left, R.anim.slide_out_right);
                 transaction.replace(R.id.main_fragment, fg3);
-
+                /* 戻るボタンを押すと、一つ前のフラグメントに戻る */
                 transaction.addToBackStack(null);
                 transaction.commit();
 
