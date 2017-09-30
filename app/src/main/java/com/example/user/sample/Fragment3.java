@@ -17,6 +17,7 @@ public class Fragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
+
         Bundle args = getArguments();
         int selected = args.getInt("selected");
 
