@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,36 +14,39 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import static com.example.user.sample.R.id.listView;
+import static com.example.user.sample.R.id.searchResultListView;
 
-public class Fragment1 extends Fragment {
+/**
+ * Created by USER on 2017/09/30.
+ * Author URA.
+ */
 
+public class SearchResultFragment extends Fragment {
+
+    ArrayList<String> matchList=new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_fragment1, null);
+
+        Bundle args = getArguments();
+
+        matchList = args.getStringArrayList("matchList");
+
+        return inflater.inflate(R.layout.search_result_frg, null);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        //リストアイテムのラベルを格納する ArrayListをインスタンス化
-        ArrayList<String>labelList=new ArrayList<>();
-
-        //「List Item " "」を20個リストに追加
-        for(int i=1;i<=20;i++){
-            labelList.add("List Item"+i);
-        }
-
         //listをlistViewに結び付ける
-        ListView lv = (ListView)view.findViewById(listView);
+        ListView lv = (ListView)view.findViewById(searchResultListView);
 
         //Adapterのインスタンス化
         //第3引数にlabelListを渡す
-        CustomAdapter mAdapter = new CustomAdapter(getActivity(),0,labelList);
+        CustomAdapter mAdapter = new CustomAdapter(getActivity(),0,matchList);
 
         //リストにAdapterをセット
         lv.setAdapter(mAdapter);
