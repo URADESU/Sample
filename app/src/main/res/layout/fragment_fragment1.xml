@@ -7,7 +7,6 @@ ListView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.user.sample.Fragment1"
-    android:tag="Fragment1"
     android:id="@+id/main_fragment">
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/listView"

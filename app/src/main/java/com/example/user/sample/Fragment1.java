@@ -32,10 +32,10 @@ public class Fragment1 extends Fragment {
 
 
         //リストアイテムのラベルを格納する ArrayListをインスタンス化
-        ArrayList<String>labelList=new ArrayList<>();
+        final ArrayList<String>labelList = new ArrayList<>();
 
         //「List Item " "」を20個リストに追加
-        for(int i=1;i<=20;i++){
+        for(int i = 1; i <= 20; i++){
             labelList.add("List Item"+i);
         }
 
@@ -49,23 +49,27 @@ public class Fragment1 extends Fragment {
         //リストにAdapterをセット
         lv.setAdapter(mAdapter);
 
-
         //リストが選択された時の処理
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                Fragment3 fg3 = new Fragment3();
                 Bundle bundle = new Bundle();
                 bundle.putInt("selected", position);
-                Fragment3 fg3 = new Fragment3();
-
                 fg3.setArguments(bundle);
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
+                /* フラグメント置き換え時のアニメーション設定 */
+                transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
+                        R.anim.slide_in_left, R.anim.slide_out_right);
+                transaction.replace(R.id.main_fragment, fg3);
+                /* 戻るボタンを押すと、一つ前のフラグメントに戻る */
+                transaction.addToBackStack(null);
+                transaction.commit();
 
-                transaction.replace(R.id.main_fragment, fg3).addToBackStack(null).commit();
             }
         });
 
