@@ -1,0 +1,19 @@
+<!--
+ListView
+データの一覧を表示する。
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.user.sample.SearchResultFragment"
+    android:tag="SearchResultFragment"
+    android:id="@+id/SearchResultFragment"
+    >
+
+    <ListView
+        android:id="@+id/searchResultListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"></ListView>
+</FrameLayout>
