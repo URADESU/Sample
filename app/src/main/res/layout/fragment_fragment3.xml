@@ -12,6 +12,7 @@
     tools:context="com.example.user.sample.Fragment3">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
@@ -21,6 +22,11 @@
         android:gravity="center_vertical"
         android:textAlignment="center"
         android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/list_album_art"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </FrameLayout>
