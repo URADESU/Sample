@@ -13,7 +13,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import static com.example.user.sample.R.id.listView;
 import static com.example.user.sample.R.id.searchResultListView;
 
 /**
@@ -74,6 +73,10 @@ public class SearchResultFragment extends Fragment {
 
         //リストアイテムの間の区切り線を非表示にする
         lv.setDivider(null);
+
+//        getFragmentManager().popBackStack();
+
+
     }
 
 }

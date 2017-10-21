@@ -1,6 +1,5 @@
 package com.example.user.sample;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -10,13 +9,9 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import static android.R.attr.label;
-import static com.example.user.sample.R.id.listView;
 
 public class MainActivity extends FragmentActivity {
 
@@ -42,8 +37,10 @@ public class MainActivity extends FragmentActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.inflateMenu(R.menu.activity_search);
 
-        for(int i=1;i<=20;i++){
-            labelList.add("List Item"+i);
+        final String[] listEnglish = getResources().getStringArray(R.array.array_japanese);
+        //array.xmlの記載している単語の数だけ表示させるリストを作成する。
+        for( String englishWord: listEnglish ){
+            labelList.add(englishWord);
         }
 
         mSearchView = (SearchView) toolbar.getMenu().findItem(R.id.toolbar_menu_search).getActionView();
@@ -59,10 +56,7 @@ public class MainActivity extends FragmentActivity {
 
 
                 Bundle bundle = new Bundle();
-
                 bundle.putStringArrayList("matchList",charSearch(s));
-
-
                 SearchResultFragment srf = new SearchResultFragment();
                 srf.setArguments(bundle);
 
@@ -71,7 +65,7 @@ public class MainActivity extends FragmentActivity {
 
                 transaction.replace(R.id.main_fragment, srf).addToBackStack(null).commit();
 
-                return false;
+                return true;
             }
             @Override
             public boolean onQueryTextChange(String s) {
@@ -83,7 +77,7 @@ public class MainActivity extends FragmentActivity {
 
     //検索された文字列をリスト内から探す
     public ArrayList charSearch(String s){
-        int position = 0;
+//        int position = 0;
         ArrayList<String> matchList = new ArrayList<>();
 
         for(int i = 0; i < labelList.size(); i++) {
@@ -94,5 +88,9 @@ public class MainActivity extends FragmentActivity {
 
         return matchList;
     }
+
+
+
+
 
 }

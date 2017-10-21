@@ -11,22 +11,16 @@
     android:clickable="true"
     tools:context="com.example.user.sample.Fragment3">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:background="@color/colorAccent"
-        android:gravity="center_vertical"
-        android:textAlignment="center"
-        android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/list_album_art"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent" />
 
-
+    <TextView
+        android:id="@+id/error1"
+        android:layout_width="295dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_vertical|center_horizontal"/>
 </FrameLayout>

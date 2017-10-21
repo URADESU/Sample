@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,13 +33,14 @@ public class Fragment1 extends Fragment {
         //リストアイテムのラベルを格納する ArrayListをインスタンス化
         final ArrayList<String>labelList = new ArrayList<>();
 
-        //「List Item " "」を20個リストに追加
-        for(int i = 1; i <= 20; i++){
-            labelList.add("List Item"+i);
-        }
-
         //listをlistViewに結び付ける
         ListView lv = (ListView)view.findViewById(listView);
+
+        final String[] listEnglish = getResources().getStringArray(R.array.array_english);
+        //array.xmlの記載している単語の数だけ表示させるリストを作成する。
+        for( String englishWord: listEnglish ){
+            labelList.add(englishWord);
+        }
 
         //Adapterのインスタンス化
         //第3引数にlabelListを渡す
@@ -58,6 +58,8 @@ public class Fragment1 extends Fragment {
                 Fragment3 fg3 = new Fragment3();
                 Bundle bundle = new Bundle();
                 bundle.putInt("selected", position);
+                bundle.putString("tango", labelList.get(position));
+
                 fg3.setArguments(bundle);
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -66,7 +68,7 @@ public class Fragment1 extends Fragment {
                 /* フラグメント置き換え時のアニメーション設定 */
                 transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
                         R.anim.slide_in_left, R.anim.slide_out_right);
-                transaction.replace(R.id.main_fragment, fg3);
+                transaction.replace(R.id.contents2, fg3);
                 /* 戻るボタンを押すと、一つ前のフラグメントに戻る */
                 transaction.addToBackStack(null);
                 transaction.commit();

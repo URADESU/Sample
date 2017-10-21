@@ -35,9 +35,11 @@ public class CustomAdapter extends ArrayAdapter<String>{
 
         //Viewを再利用している場合は新たにViewを作らない
         if (view == null) {
+
             inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.item_layout,null);
             TextView label = (TextView)view.findViewById(R.id.txtBase);
+
             holder = new ViewHolder();
             holder.labelText=label;
             view.setTag(holder);
