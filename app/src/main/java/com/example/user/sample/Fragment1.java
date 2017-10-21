@@ -63,6 +63,7 @@ public class Fragment1 extends Fragment {
                 fg3.setArguments(bundle);
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 /* フラグメント置き換え時のアニメーション設定 */
                 transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
