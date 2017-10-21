@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arrays_drawable">
+        <item>@drawable/drawable1</item>
+        <item>@drawable/drawable2</item>
+        <item>@drawable/drawable3</item>
+        <item>@drawable/drawable4</item>
+        <item>@drawable/drawable5</item>
+    </string-array>
+
+    <string-array name="array_tango">
+        <item>hello_blank_fragment</item>
+        <item>hello_blank_fragment1</item>
+        <item>hello_blank_fragment2</item>
+        <item>hello_blank_fragment3</item>
+        <item>hello_blank_fragment4</item>
+        <item>hello_blank_fragment5</item>
+    </string-array>
+
+</resources>

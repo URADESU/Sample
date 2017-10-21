@@ -1,8 +1,24 @@
 package com.example.user.sample;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import static android.R.attr.label;
+import static android.view.View.GONE;
+import static com.example.user.sample.R.id.listView;
 import android.view.View;
 import android.widget.ImageView;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +27,13 @@ import android.support.v4.app.FragmentManager;
 public class MainActivity extends FragmentActivity {
 
     ViewPager viewPager;
+    SearchView mSearchView;
+    ArrayList<String> labelList = new ArrayList();
+    CustomAdapter.ViewHolder holder = new CustomAdapter.ViewHolder();
+    private TextView label;
+    View view;
+
+    private SearchResultFragment srf = new SearchResultFragment();
     ImageView search;
     ImageView wiki;
 
@@ -40,6 +63,76 @@ public class MainActivity extends FragmentActivity {
                 transaction.commit();
             }
         });
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.inflateMenu(R.menu.activity_search);
+
+        for(int i=1;i<=20;i++){
+            labelList.add("List Item"+i);
+        }
+
+        mSearchView = (SearchView) toolbar.getMenu().findItem(R.id.toolbar_menu_search).getActionView();
+        mSearchView.setIconified(false);
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+//                Log.d("MainActivity","送信時　入力文字列＝"+ s);
+//
+//                ListView lv = (ListView)findViewById(listView);
+//
+//                lv.setSelection(charSearch(s));
+                ArrayList<String> searchResult = charSearch(s);
+
+                if(searchResult.size() > 0) {
+
+
+                    Bundle bundle = new Bundle();
+
+                    bundle.putStringArrayList("matchList", charSearch(s));
+
+                    srf = new SearchResultFragment();
+                    srf.setArguments(bundle);
+
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+                    transaction.replace(R.id.main_fragment, srf).addToBackStack(null).commit();
+                }
+
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                Log.d("MainActivity","変更時");
+                return false;
+            }
+        });
+    }
+
+    //検索された文字列をリスト内から探す
+    public ArrayList charSearch(String s){
+        int position = 0;
+        ArrayList<String> matchList = new ArrayList<>();
+
+        for(int i = 0; i < labelList.size(); i++) {
+            if (labelList.get(i).indexOf(s) != -1) {
+                matchList.add(labelList.get(i));
+            }
+        }
+
+        return matchList;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Fragment1 frg1 = new Fragment1();
+        Fragment2 frg2 = new Fragment2();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        transaction.replace(R.id.main_fragment, frg2).commit();
+            return false;
+    }
 
 
         //検索ボタン
