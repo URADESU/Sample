@@ -1,12 +1,14 @@
 package com.example.user.sample;
 
-
-        import android.support.v4.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 public class Adapter
         extends FragmentStatePagerAdapter {
+
+    private Fragment mCurrentFragment;
 
     public Adapter(FragmentManager fm) {
 
@@ -36,6 +38,18 @@ public class Adapter
     public CharSequence getPageTitle(int position) {
 
         return "Page " + position;
+    }
+
+    @Override
+    public void setPrimaryItem(ViewGroup container, int position, Object object) {
+        if (mCurrentFragment != object) {
+            mCurrentFragment = (Fragment) object;
+        }
+        super.setPrimaryItem(container, position, object);
+    }
+
+    public Fragment getCurrentFragment() {
+        return mCurrentFragment;
     }
 
 }

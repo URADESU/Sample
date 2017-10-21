@@ -24,11 +24,11 @@ public class Fragment3 extends Fragment {
         TextView tv = (TextView)view.findViewById(R.id.textView3);
         tv.setText(String.valueOf(selected + 1) + "番が選択されました。");
 
-        /* リスト選択時に画像を表示させる */
-        ImageView imageview = (ImageView)view.findViewById(R.id.list_album_art);
-        TypedArray typedArray = getResources().obtainTypedArray(R.array.arrays_drawable);
-        Drawable drawable = typedArray.getDrawable(selected);
-        imageview.setImageDrawable(drawable);
+//        /* リスト選択時に画像を表示させる */
+//        ImageView imageview = (ImageView)view.findViewById(R.id.list_album_art);
+//        TypedArray typedArray = getResources().obtainTypedArray(R.array.arrays_drawable);
+//        Drawable drawable = typedArray.getDrawable(selected);
+//        imageview.setImageDrawable(drawable);
 
         return view;
     }

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import static android.R.attr.label;
+import static android.view.View.GONE;
 import static com.example.user.sample.R.id.listView;
 
 public class MainActivity extends FragmentActivity {
@@ -26,6 +28,8 @@ public class MainActivity extends FragmentActivity {
     CustomAdapter.ViewHolder holder = new CustomAdapter.ViewHolder();
     private TextView label;
     View view;
+
+    private SearchResultFragment srf = new SearchResultFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class MainActivity extends FragmentActivity {
         }
 
         mSearchView = (SearchView) toolbar.getMenu().findItem(R.id.toolbar_menu_search).getActionView();
+        mSearchView.setIconified(false);
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -55,21 +60,23 @@ public class MainActivity extends FragmentActivity {
 //                ListView lv = (ListView)findViewById(listView);
 //
 //                lv.setSelection(charSearch(s));
+                ArrayList<String> searchResult = charSearch(s);
+
+                if(searchResult.size() > 0) {
 
 
+                    Bundle bundle = new Bundle();
 
-                Bundle bundle = new Bundle();
+                    bundle.putStringArrayList("matchList", charSearch(s));
 
-                bundle.putStringArrayList("matchList",charSearch(s));
+                    srf = new SearchResultFragment();
+                    srf.setArguments(bundle);
 
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-                SearchResultFragment srf = new SearchResultFragment();
-                srf.setArguments(bundle);
-
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-
-                transaction.replace(R.id.main_fragment, srf).addToBackStack(null).commit();
+                    transaction.replace(R.id.main_fragment, srf).addToBackStack(null).commit();
+                }
 
                 return false;
             }
@@ -93,6 +100,17 @@ public class MainActivity extends FragmentActivity {
         }
 
         return matchList;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Fragment1 frg1 = new Fragment1();
+        Fragment2 frg2 = new Fragment2();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        transaction.replace(R.id.main_fragment, frg2).commit();
+            return false;
     }
 
 }
