@@ -13,9 +13,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import static android.view.View.VISIBLE;
 import static com.example.user.sample.R.id.listView;
-import static com.example.user.sample.R.id.toolbar;
 
 public class Fragment1 extends Fragment {
 
@@ -70,17 +68,13 @@ public class Fragment1 extends Fragment {
                 /* フラグメント置き換え時のアニメーション設定 */
                 transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left,
                         R.anim.slide_in_left, R.anim.slide_out_right);
-                transaction.replace(R.id.contents2, fg3);
+                transaction.replace(R.id.contents3, fg3);
                 /* 戻るボタンを押すと、一つ前のフラグメントに戻る */
                 transaction.addToBackStack(null);
                 transaction.commit();
 
             }
         });
-
-
-
-
         //リストアイテムの間の区切り線を非表示にする
         lv.setDivider(null);
     }

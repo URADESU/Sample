@@ -2,14 +2,12 @@ package com.example.user.sample;
 
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 /**
  * リストから単語を選択時に表示される画面のクラスです。
@@ -33,11 +31,11 @@ public class Fragment3 extends Fragment {
 
         /* リスト選択時に画像を表示させる */
         ImageView imageview = (ImageView)view.findViewById(R.id.list_album_art);
-        TypedArray typedArray = getResources().obtainTypedArray(R.array.arrays_drawable);
+        TypedArray typedArray = getResources().obtainTypedArray(R.array.array_EngDrawable);
         Drawable drawable = typedArray.getDrawable(selected);
         imageview.setImageDrawable(drawable);
 
-        }
+
         return view;
 
 
