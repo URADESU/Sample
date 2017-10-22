@@ -2,6 +2,7 @@ package com.example.user.sample;
 
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -32,17 +33,9 @@ public class Fragment3 extends Fragment {
 
         /* リスト選択時に画像を表示させる */
         ImageView imageview = (ImageView)view.findViewById(R.id.list_album_art);
-//        TypedArray typedArray = getResources().obtainTypedArray(R.array.array_EngDrawable);
-//        Drawable drawable = typedArray.getDrawable(selected);
-//        imageview.setImageDrawable(drawable);
-
-        try{
-            TypedArray typedArray = getResources().obtainTypedArray(R.array.array_EngDrawable);
-            Drawable drawable = typedArray.getDrawable(selected);
-            imageview.setImageDrawable(drawable);
-        }catch(ArrayIndexOutOfBoundsException e){
-            TextView error = (TextView)view.findViewById(R.id.error1);
-            error.setText("表示できません");
+        TypedArray typedArray = getResources().obtainTypedArray(R.array.arrays_drawable);
+        Drawable drawable = typedArray.getDrawable(selected);
+        imageview.setImageDrawable(drawable);
 
         }
         return view;

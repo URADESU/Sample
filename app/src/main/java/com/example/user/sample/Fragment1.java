@@ -13,7 +13,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import static android.view.View.VISIBLE;
 import static com.example.user.sample.R.id.listView;
+import static com.example.user.sample.R.id.toolbar;
 
 public class Fragment1 extends Fragment {
 
@@ -75,6 +77,8 @@ public class Fragment1 extends Fragment {
 
             }
         });
+
+
 
 
         //リストアイテムの間の区切り線を非表示にする
