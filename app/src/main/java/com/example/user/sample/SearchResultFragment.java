@@ -34,11 +34,12 @@ public class SearchResultFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
+        View v = inflater.inflate(R.layout.search_result_frg, container,false);
         Bundle args = getArguments();
 
         matchList = args.getStringArrayList("matchList");
 
-        return inflater.inflate(R.layout.search_result_frg, null);
+        return v;
     }
 
     @Override
