@@ -89,14 +89,11 @@ public class MainActivity extends FragmentActivity {
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-//                Log.d("MainActivity","送信時　入力文字列＝"+ s);
-//
-//                ListView lv = (ListView)findViewById(listView);
-//
-//                lv.setSelection(charSearch(s));
+
+
                 ArrayList<String> searchResult = charSearch(s);
 
-                if(searchResult.size() > 0) {
+                    if(searchResult.size() > 0) {
                     Bundle bundle = new Bundle();
                     bundle.putStringArrayList("matchList", charSearch(s));
                     srf = new SearchResultFragment();
@@ -133,6 +130,17 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onBackPressed(){
         super.onBackPressed();
+
+        //バックスタックにいくつFragmentが入っているかを取得
+        int backStackCnt = getSupportFragmentManager().getBackStackEntryCount();
+        //1以上Fragmentがある場合、その数分、ポップを行い元の画面へ戻る
+        if (backStackCnt != 0) {
+            for(int i = 0;i < backStackCnt;i++) {
+                getSupportFragmentManager().popBackStack();
+            }
+        }
+
+
         wiki.setClickable(true);
         findViewById(R.id.wiki_button).setVisibility(View.GONE);
         findViewById(R.id.search_button).setVisibility(View.VISIBLE);
