@@ -65,7 +65,6 @@ public class MainActivity extends FragmentActivity {
         //ViewPagerにアダプターをセット
         viewPager.setAdapter(currentAdapt);
 
-
         //Wikiボタン
         wiki = (ImageView) findViewById(R.id.wiki_button);
         wiki.setOnClickListener(new View.OnClickListener(){
