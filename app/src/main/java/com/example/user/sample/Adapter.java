@@ -1,5 +1,6 @@
 package com.example.user.sample;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -10,9 +11,15 @@ public class Adapter
 
     private Fragment mCurrentFragment;
 
-    public Adapter(FragmentManager fm) {
+    private Activity activity;
+
+    private boolean showItemFlg;
+
+    public Adapter(FragmentManager fm,Fragment frg) {
 
         super(fm);
+
+        mCurrentFragment = frg;
     }
 
     @Override
@@ -20,7 +27,7 @@ public class Adapter
 
         switch(i){
             case 0:
-                return new Fragment1();
+                return mCurrentFragment;
             default:
                 return new Fragment2();
 
@@ -48,8 +55,13 @@ public class Adapter
         super.setPrimaryItem(container, position, object);
     }
 
-    public Fragment getCurrentFragment() {
-        return mCurrentFragment;
+
+    public void setCurrentFragment(Fragment frg){
+        mCurrentFragment = frg;
     }
+
+//    public boolean getShowItemFlg(){
+//
+//    }
 
 }

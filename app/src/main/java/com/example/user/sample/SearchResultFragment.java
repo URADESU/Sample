@@ -29,6 +29,8 @@ public class SearchResultFragment extends Fragment {
 
     ArrayList<String> matchList=new ArrayList<>();
 
+    private boolean showItemFlg;
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
@@ -63,6 +65,8 @@ public class SearchResultFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                showItemFlg = true;
+
                 Bundle bundle = new Bundle();
                 bundle.putInt("selected", position);
                 Fragment3 fg3 = new Fragment3();
@@ -83,6 +87,14 @@ public class SearchResultFragment extends Fragment {
 //        getFragmentManager().popBackStack();
 
 
+    }
+
+    public boolean getShowItemFlg(){
+        return showItemFlg;
+    }
+
+    public void setShowItemFlg(boolean flg){
+        showItemFlg = flg;
     }
 
 }
