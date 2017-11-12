@@ -12,10 +12,22 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static com.example.user.sample.R.id.listView;
 
 public class Fragment1 extends Fragment {
+
+/*----------宣言部----------*/
+
+    private OnClickItemListener onClickItemListener;
+
+/*----------宣言部/----------*/
+
+    interface OnClickItemListener{
+        //リスナーに押下されたリストの番号を渡すメソッド
+        void setItemNum(int num);
+    }
 
 
     @Override
@@ -29,6 +41,10 @@ public class Fragment1 extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        Bundle bundle = getArguments();
+
+        onClickItemListener = (OnClickItemListener) bundle.getSerializable("Activity");
 
         //リストアイテムのラベルを格納する ArrayListをインスタンス化
         final ArrayList<String>labelList = new ArrayList<>();
@@ -55,6 +71,7 @@ public class Fragment1 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                onClickItemListener.setItemNum(position);
                 Fragment3 fg3 = new Fragment3();
                 Bundle bundle = new Bundle();
                 bundle.putInt("selected", position);

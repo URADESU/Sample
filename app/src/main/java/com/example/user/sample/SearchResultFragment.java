@@ -76,7 +76,7 @@ public class SearchResultFragment extends Fragment {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-                transaction.replace(R.id.main_fragment, fg3).addToBackStack(null).commit();
+                transaction.replace(R.id.contents3, fg3).addToBackStack(null).commit();
             }
         });
 

@@ -1,6 +1,8 @@
 package com.example.user.sample;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
@@ -8,6 +10,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -15,14 +18,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.util.Log.d;
 import static android.view.View.GONE;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements Fragment1.OnClickItemListener, Serializable{
 
     //ページの数だけ右左に画面
     private ViewPager viewPager;
@@ -58,8 +63,13 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //MainActivityの始まり確認のためのlog
-        d("MainActivity","MainActivity始まり");
+
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("Activity",this);
+
+        frg1.setArguments(bundle);
+
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         //ViewPagerにアダプターをセット
@@ -70,15 +80,30 @@ public class MainActivity extends FragmentActivity {
         wiki.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View view){
+
+
+                //wikiダイアログ表示処理
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder
+                        .setTitle("IPアドレス")
+                        .setMessage("IPアドレス（アイピーアドレス、英: Internet Protocol address）とは、IPにおいてパケットを送受信する機器を判別するための番号である。")
+                        .setPositiveButton("閉じる", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+// ボタンをクリックしたときの動作
+                            }
+                        });
+                builder.show();
+
+
                 //押下時の処理
-                Fragment4 fragment4 = new Fragment4();
-                /* wikiボタン押下時、クリック不可にする。 */
-                wiki.setClickable(false);
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.contents3,fragment4 );
-                transaction.addToBackStack(null);
-                transaction.commit();
+//                Fragment4 fragment4 = new Fragment4();
+//                /* wikiボタン押下時、クリック不可にする。 */
+//                wiki.setClickable(false);
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                FragmentTransaction transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.contents3,fragment4 );
+//                transaction.addToBackStack(null);
+//                transaction.commit();
             }
         });
 
@@ -137,7 +162,7 @@ public class MainActivity extends FragmentActivity {
                     srf.setArguments(bundle);
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
-                    transaction.replace(R.id.main_fragment, srf).addToBackStack(null).commit();
+                    transaction.replace(R.id.contents3, srf).addToBackStack(null).commit();
                 }
 
                 return true;
@@ -231,6 +256,12 @@ public class MainActivity extends FragmentActivity {
         }else{
 
         }
+    }
+
+    @Override
+    public void setItemNum(int num){
+        int hoge = num;
+        Log.d("setItem= ",""+hoge);
     }
 
 }
