@@ -89,6 +89,10 @@ public class Fragment1 extends Fragment {
                 /* 戻るボタンを押すと、一つ前のフラグメントに戻る */
                 transaction.addToBackStack(null);
                 transaction.commit();
+                /*メニューバーのボタン制御*/
+                MainActivity maActivity = (MainActivity) getActivity();
+                maActivity.setScreenInformation(2);
+                maActivity.changeButton();
 
             }
         });

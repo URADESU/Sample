@@ -77,6 +77,11 @@ public class SearchResultFragment extends Fragment {
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 
                 transaction.replace(R.id.contents3, fg3).addToBackStack(null).commit();
+
+                /*メニューバーのボタン制御*/
+                MainActivity maActivity = (MainActivity) getActivity();
+                maActivity.setScreenInformation(2);
+                maActivity.changeButton();
             }
         });
 

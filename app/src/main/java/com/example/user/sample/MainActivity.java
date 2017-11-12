@@ -59,6 +59,9 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
     //SearchBarの表示、非表示を管理するフラグ
     private boolean showSB;
 
+    //表示画面情報
+    private int screenInformation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,8 +116,6 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
 
             public void onClick(View view){
                 //押下時の処理
-                findViewById(R.id.wiki_button).setVisibility(View.VISIBLE);
-                findViewById(R.id.search_button).setVisibility(GONE);
 
                 /*
                 * SearchBar表示中→非表示
@@ -163,6 +164,10 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.replace(R.id.contents3, srf).addToBackStack(null).commit();
+
+                        /*メニューバーのボタン制御*/
+                        setScreenInformation(1);
+                        changeButton();
                 }
 
                 return true;
@@ -219,23 +224,40 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
         srf.setShowItemFlg(false);
 
         wiki.setClickable(true);
-        findViewById(R.id.wiki_button).setVisibility(GONE);
-        findViewById(R.id.search_button).setVisibility(View.VISIBLE);
+        if(getScreenInformation() >= 2){
+            setScreenInformation(getScreenInformation() -1);
+        }
+        changeButton();
     }
 
     /**
      * 表示ボタンの切り替え
      */
-    /*
-    protected void changebuttom() {
-        if (リストを表示) {//検索ボタン
-            findViewById(R.id.wiki_button).setVisibility(View.GONE);
-            findViewById(R.id.search_button).setVisibility(View.VISIBLE);
-        } else if (詳細を表示) { // 詳細ボタン
-            findViewById(R.id.wiki_button).setVisibility(View.VISIBLE);
-            findViewById(R.id.search_button).setVisibility(View.GONE);
+    protected void changeButton() {
+        if (getScreenInformation() == 1 && search.getVisibility() == View.GONE ){ //検索ボタン表示
+            wiki.setVisibility(View.GONE);
+            search.setVisibility(View.VISIBLE);
+        } else if (getScreenInformation() == 2 ) { // 詳細ボタン表示
+            search.setVisibility(View.GONE);
+            wiki.setVisibility(View.VISIBLE);
+            wiki.setEnabled(true);
         }
-    }*/
+    }
+
+    /**
+     * 現在の表示画面情報を設定
+     * page　1:一覧画面　2:詳細画面　3:説明表示
+     */
+    protected void setScreenInformation(int page) {
+        screenInformation = page ;
+    }
+
+    /**
+     * 現在の表示画面情報を取得
+     */
+    protected int getScreenInformation(){
+        return screenInformation;
+    }
 
     public Fragment getVisibleFragment(){
         FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
