@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/tools">
 
     <!-- ここから画像の指定  -->
+    <!--英語-->
     <string-array name="array_EngDrawable">
         <item>@drawable/drawable1</item>
         <item>@drawable/drawable2</item>
@@ -10,6 +11,7 @@
         <item>@drawable/drawable5</item>
     </string-array>
 
+    <!--日本語-->
     <string-array name="array_JapDrawable">
         <item>@drawable/drawable1</item>
         <item>@drawable/drawable2</item>
@@ -22,11 +24,11 @@
 
     <!-- ここからリスト文字列の設定  -->
     <string-array name="array_english">
-        <item>hello_blank_fragment</item>
-        <item>hello_blank_fragment1</item>
-        <item>hello_blank_fragment2</item>
-        <item>hello_blank_fragment3</item>
-        <item>hello_blank_fragment4</item>
+        <item>AR</item>
+        <item>API</item>
+        <item>CPU</item>
+        <item>HDD</item>
+        <item>HTML</item>
         <item>hello_blank_fragment5</item>
         <item>hello_blank_fragment6</item>
         <item>hello_blank_fragment7</item>
@@ -74,4 +76,39 @@
     </string-array>
 
     <!-- ここからリスト文字列の設定  -->
+
+
+    <!--以下、ダイアログ内のアイテム-->
+
+    <!--タイトル-->
+    <!--英語-->
+    <string-array name="ArrayEngTitle">
+        <item>AR</item>
+        <item>API</item>
+        <item>CPU</item>
+        <item>HDD</item>
+        <item>HTML</item>
+    </string-array>
+
+    <!--内容-->
+    <!--英語-->
+    <string-array name="ArrayEngText">
+        <item>拡張現実（かくちょうげんじつ、英: Augmented Reality、オーグメンティッド・リアリティ、AR）とは、人が知覚する現実環境をコンピュータにより拡張する技術、およびコンピュータにより拡張された現実環境そのものを指す言葉</item>
+        <item>アプリケーションプログラミングインタフェース（API、英: Application Programming Interface）とは、ソフトウェアコンポーネントが互いにやりとりするのに使用するインタフェースの仕様である</item>
+        <item>CPU（シーピーユー、英: Central Processing Unit）、中央処理装置（ちゅうおうしょりそうち）は、コンピュータにおける中心的な処理装置（プロセッサ）[1]。</item>
+        <item>ハードディスクドライブ（英: hard disk drive, HDD）とは、磁性体を塗布した円盤を高速回転し、磁気ヘッドを移動することで、情報を記録し読み出す補助記憶装置の一種である。</item>
+        <item>HyperText Markup Language（ハイパーテキスト マークアップ ランゲージ、HTML（エイチティーエムエル））は、ハイパーテキストを記述するためのマークアップ言語の1つである</item>
+    </string-array>
+
+
+
+    <!--URL-->
+    <!--英語-->
+    <string-array name="ArrayEngURL">
+        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
+        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
+        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
+        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
+        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
+    </string-array>
 </resources>

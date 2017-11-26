@@ -1,7 +1,10 @@
 package com.example.user.sample;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -10,9 +13,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,8 +37,10 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
     //検索画面
     private SearchView mSearchView;
     //ラベルリスト
-    private ArrayList<String> labelListEnglish = new ArrayList();
-    private ArrayList<String> labelListJapanese = new ArrayList();
+    private ArrayList<String> labelList = new ArrayList();
+//    private CustomAdapter.ViewHolder holder = new CustomAdapter.ViewHolder();
+//    private TextView label;
+//    private View view;
 
     //検索結果画面
     private SearchResultFragment srf = new SearchResultFragment();
@@ -54,6 +65,9 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
     //表示画面情報
     private int screenInformation;
 
+    //押下されたリストの番号
+    private int itemNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,12 +90,27 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
 
             public void onClick(View view){
 
+                //リソースファイルから、ダイアログのタイトルを取得
+                String[] title = getResources().getStringArray(R.array.ArrayEngTitle);
+                String[] text = getResources().getStringArray(R.array.ArrayEngText);
+                String[] url = getResources().getStringArray(R.array.ArrayEngURL);
+                ArrayList<TextView> arrayURL = new ArrayList<TextView>();
+                TextView hoge = new TextView(MainActivity.this);
+//                hoge = (TextView)findViewById(R.id.textURL);
+
+                for(int i = 0; i < url.length; i++){
+                    hoge.setAutoLinkMask(Linkify.WEB_URLS);
+                    hoge.setText(url[i]);
+                    arrayURL.add(hoge);
+                }
 
                 //wikiダイアログ表示処理
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
                 builder
-                        .setTitle("IPアドレス")
-                        .setMessage("IPアドレス（アイピーアドレス、英: Internet Protocol address）とは、IPにおいてパケットを送受信する機器を判別するための番号である。")
+                        .setTitle(title[itemNum])
+                        .setMessage(text[itemNum] + "\n\n" + "URL\n")
+                        .setView(arrayURL.get(itemNum))
                         .setPositiveButton("閉じる", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 // ボタンをクリックしたときの動作
@@ -89,6 +118,16 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
                         });
                 builder.show();
 
+
+                //押下時の処理
+//                Fragment4 fragment4 = new Fragment4();
+//                /* wikiボタン押下時、クリック不可にする。 */
+//                wiki.setClickable(false);
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                FragmentTransaction transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.contents3,fragment4 );
+//                transaction.addToBackStack(null);
+//                transaction.commit();
             }
         });
 
@@ -123,13 +162,7 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
         final String[] listEnglish = getResources().getStringArray(R.array.array_english);
         //array.xmlの記載している単語の数だけ表示させるリストを作成する。
         for( String englishWord: listEnglish ){
-            labelListEnglish.add(englishWord);
-        }
-
-        final String[] listJapanese = getResources().getStringArray(R.array.array_japanese);
-        //array.xmlの記載している単語の数だけ表示させるリストを作成する。
-        for( String japaneseWord: listJapanese ){
-            labelListJapanese.add(japaneseWord);
+            labelList.add(englishWord);
         }
 
         mSearchView = (SearchView) toolbar.getMenu().findItem(R.id.toolbar_menu_search).getActionView();
@@ -141,26 +174,21 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
                 //検索後、キーボード隠してる
                 mSearchView.clearFocus();
 
+
                 ArrayList<String> searchResult = charSearch(s);
 
-                if(searchResult.size() > 0) {
+                    if(searchResult.size() > 0) {
                     Bundle bundle = new Bundle();
-                    if(currentAdapt.getCurrentFragment()==frg1){
-                        bundle.putInt("fragment", 1);
-                    } else{
-                        bundle.putInt("fragment", 2);
-                    }
                     bundle.putStringArrayList("matchList", charSearch(s));
                     srf = new SearchResultFragment();
-
                     srf.setArguments(bundle);
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.replace(R.id.contents3, srf).addToBackStack(null).commit();
 
                         /*メニューバーのボタン制御*/
-                    setScreenInformation(1);
-                    changeButton();
+                        setScreenInformation(1);
+                        changeButton();
                 }
 
                 return true;
@@ -172,42 +200,18 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
         });
     }
 
-    /* 初期表示時のポジション */
-    int startPosition[] = new int[30];
-
     //検索された文字列をリスト内から探す
     public ArrayList charSearch(String s){
+//        int position = 0;
         ArrayList<String> matchList = new ArrayList<>();
-        int a = 0;
 
-        if(currentAdapt.getCurrentFragment().equals(frg1)){
-            for(int i = 0; i < labelListEnglish.size(); i++) {
-                if (labelListEnglish.get(i).indexOf(s) != -1) {
-                    matchList.add(labelListEnglish.get(i));
-                    // 検索対象の初期表示ポジションを保持
-                    startPosition[a] = i;
-                    a++;
-                }
+        for(int i = 0; i < labelList.size(); i++) {
+            if (labelList.get(i).indexOf(s) != -1) {
+                matchList.add(labelList.get(i));
             }
-        }else{
-            for(int i = 0; i < labelListJapanese.size(); i++) {
-                if (labelListJapanese.get(i).indexOf(s) != -1) {
-                    matchList.add(labelListJapanese.get(i));
-                    // 検索対象の初期表示ポジションを保持
-                    startPosition[a] = i;
-                    a++;
-                }
-            }
-
         }
-        return matchList;
-    }
 
-    /**
-     * 検索後に選択したリストの初期表示のポジションを取得
-     */
-    protected int getStartPosition(int position){
-        return startPosition[position];
+        return matchList;
     }
 
     @Override
@@ -222,7 +226,9 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
 
         //画像表示中の場合は１つのFragmentだけpop
         if(srf.getShowItemFlg()) {
+
             getSupportFragmentManager().popBackStack();
+
 
         }else{
             //バックスタックにいくつFragmentが入っているかを取得
@@ -233,7 +239,6 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
                     getSupportFragmentManager().popBackStack();
                 }
             }
-
         }
 
         srf.setShowItemFlg(false);
@@ -281,7 +286,7 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
             if(fragment != null && fragment.isVisible())
 
                 d("","リターンされました！");
-            return fragment;
+                return fragment;
         }
         return null;
     }
@@ -297,8 +302,8 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
 
     @Override
     public void setItemNum(int num){
-        int hoge = num;
-        Log.d("setItem= ",""+hoge);
+        itemNum = num;
+        Log.d("setItem= ",""+itemNum);
     }
 
 }
