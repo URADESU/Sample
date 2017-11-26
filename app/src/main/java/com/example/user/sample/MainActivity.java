@@ -30,7 +30,7 @@ import java.util.List;
 import static android.util.Log.d;
 import static android.view.View.GONE;
 
-public class MainActivity extends FragmentActivity implements Fragment1.OnClickItemListener, Serializable{
+public class MainActivity extends FragmentActivity {
 
     //ページの数だけ右左に画面
     private ViewPager viewPager;
@@ -71,11 +71,6 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Bundle bundle = new Bundle();
-
-        bundle.putSerializable("Activity",this);
-
-        frg1.setArguments(bundle);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
 
@@ -96,6 +91,7 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
                 //TODO 日本語追加
                 ArrayList<TextView> arrayURL = new ArrayList<TextView>();
                 TextView hoge = new TextView(MainActivity.this);
+                hoge.setPadding(50,0,50,0);
 //                hoge = (TextView)findViewById(R.id.textURL);
 
                 for(int i = 0; i < url.length; i++){
@@ -109,7 +105,7 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
 
                 builder
                         .setTitle(title[itemNum])
-                        .setMessage(text[itemNum] + "\n\n" + "URL\n")
+                        .setMessage(text[itemNum] + "\n\n" + "URL")
                         .setView(arrayURL.get(itemNum))
                         .setPositiveButton("閉じる", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -324,10 +320,8 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
         }
     }
 
-    @Override
     public void setItemNum(int num){
-        int hoge = num;
-        Log.d("setItem= ",""+hoge);
+        itemNum = num;
     }
 
 }
