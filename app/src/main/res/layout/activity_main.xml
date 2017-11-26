@@ -97,4 +97,11 @@
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
+
+    <TextView
+        android:id="@+id/textURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="abc"/>
+
 </android.support.constraint.ConstraintLayout>

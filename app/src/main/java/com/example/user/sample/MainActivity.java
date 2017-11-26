@@ -13,12 +13,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,6 +65,9 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
     //表示画面情報
     private int screenInformation;
 
+    //押下されたリストの番号
+    private int itemNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,12 +90,27 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
 
             public void onClick(View view){
 
+                //リソースファイルから、ダイアログのタイトルを取得
+                String[] title = getResources().getStringArray(R.array.ArrayEngTitle);
+                String[] text = getResources().getStringArray(R.array.ArrayEngText);
+                String[] url = getResources().getStringArray(R.array.ArrayEngURL);
+                ArrayList<TextView> arrayURL = new ArrayList<TextView>();
+                TextView hoge = new TextView(MainActivity.this);
+//                hoge = (TextView)findViewById(R.id.textURL);
+
+                for(int i = 0; i < url.length; i++){
+                    hoge.setAutoLinkMask(Linkify.WEB_URLS);
+                    hoge.setText(url[i]);
+                    arrayURL.add(hoge);
+                }
 
                 //wikiダイアログ表示処理
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
                 builder
-                        .setTitle("IPアドレス")
-                        .setMessage("IPアドレス（アイピーアドレス、英: Internet Protocol address）とは、IPにおいてパケットを送受信する機器を判別するための番号である。")
+                        .setTitle(title[itemNum])
+                        .setMessage(text[itemNum] + "\n\n" + "URL\n")
+                        .setView(arrayURL.get(itemNum))
                         .setPositiveButton("閉じる", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 // ボタンをクリックしたときの動作
@@ -218,7 +239,6 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
                     getSupportFragmentManager().popBackStack();
                 }
             }
-
         }
 
         srf.setShowItemFlg(false);
@@ -282,8 +302,8 @@ public class MainActivity extends FragmentActivity implements Fragment1.OnClickI
 
     @Override
     public void setItemNum(int num){
-        int hoge = num;
-        Log.d("setItem= ",""+hoge);
+        itemNum = num;
+        Log.d("setItem= ",""+itemNum);
     }
 
 }
