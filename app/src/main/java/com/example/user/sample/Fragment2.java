@@ -58,7 +58,6 @@ public class Fragment2 extends Fragment {
                 Fragment5 fg5 = new Fragment5();
                 Bundle bundle = new Bundle();
                 bundle.putInt("selected", position);
-                bundle.putString("tango", labelList.get(position));
                 fg5.setArguments(bundle);
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

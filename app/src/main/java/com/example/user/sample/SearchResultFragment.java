@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +13,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import static android.support.v4.app.FragmentManager.POP_BACK_STACK_INCLUSIVE;
-import static android.view.View.GONE;
-import static com.example.user.sample.R.id.listView;
 import static com.example.user.sample.R.id.searchResultListView;
 
 /**
@@ -28,8 +23,8 @@ import static com.example.user.sample.R.id.searchResultListView;
 public class SearchResultFragment extends Fragment {
 
     ArrayList<String> matchList=new ArrayList<>();
-
     private boolean showItemFlg;
+    int fragmentCondition;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -38,6 +33,9 @@ public class SearchResultFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.search_result_frg, container,false);
         Bundle args = getArguments();
+
+        fragmentCondition = args.getInt("fragment");
+
 
         matchList = args.getStringArrayList("matchList");
 
@@ -68,18 +66,28 @@ public class SearchResultFragment extends Fragment {
                 showItemFlg = true;
 
                 Bundle bundle = new Bundle();
-                bundle.putInt("selected", position);
-                Fragment3 fg3 = new Fragment3();
+                MainActivity maActivity = (MainActivity) getActivity();
 
-                fg3.setArguments(bundle);
+                int startPosition = maActivity.getStartPosition(position);
+                bundle.putInt("selected", startPosition);
 
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-                transaction.replace(R.id.contents3, fg3).addToBackStack(null).commit();
+                if(fragmentCondition==1){
+                    Fragment3 fg3 = new Fragment3();
+                    fg3.setArguments(bundle);
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.contents3, fg3).addToBackStack(null).commit();
+                }else if(fragmentCondition==2){
+
+                    Fragment5 fg5 = new Fragment5();
+                    fg5.setArguments(bundle);
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.contents3, fg5).addToBackStack(null).commit();
+                }
 
                 /*メニューバーのボタン制御*/
-                MainActivity maActivity = (MainActivity) getActivity();
                 maActivity.setScreenInformation(2);
                 maActivity.changeButton();
             }

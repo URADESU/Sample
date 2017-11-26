@@ -56,12 +56,8 @@ public class Adapter
     }
 
 
-    public void setCurrentFragment(Fragment frg){
-        mCurrentFragment = frg;
+    public Fragment getCurrentFragment(){
+        return mCurrentFragment;
     }
-
-//    public boolean getShowItemFlg(){
-//
-//    }
 
 }
