@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 import static com.example.user.sample.R.id.listView;
 
@@ -20,11 +19,7 @@ public class Fragment1 extends Fragment {
 
 /*----------宣言部----------*/
 
-
-
 /*----------宣言部/----------*/
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -36,7 +31,6 @@ public class Fragment1 extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         //リストアイテムのラベルを格納する ArrayListをインスタンス化
         final ArrayList<String>labelList = new ArrayList<>();
@@ -85,14 +79,11 @@ public class Fragment1 extends Fragment {
                 transaction.addToBackStack(null);
                 transaction.commit();
                 /*メニューバーのボタン制御*/
-
                 maActivity.setScreenInformation(2);
                 maActivity.changeButton();
-
             }
         });
         //リストアイテムの間の区切り線を非表示にする
         lv.setDivider(null);
     }
-
 }

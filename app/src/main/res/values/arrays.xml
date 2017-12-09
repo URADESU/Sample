@@ -4,20 +4,53 @@
     <!-- ここから画像の指定  -->
     <!--英語-->
     <string-array name="array_EngDrawable">
-        <item>@drawable/drawable1</item>
-        <item>@drawable/drawable2</item>
-        <item>@drawable/drawable3</item>
-        <item>@drawable/drawable4</item>
-        <item>@drawable/drawable5</item>
+        <item>@drawable/drawable1</item><!--AR-->
+        <item>@drawable/ai</item><!--AI-->
+        <item>@drawable/drawable1</item><!--API-->
+        <item>@drawable/cpu</item><!--CPU-->
+        <item>@drawable/drawable1</item><!--HDD-->
+        <item>@drawable/drawable1</item><!--HTML-->
+        <item>@drawable/drawable1</item><!--IoT-->
+        <item>@drawable/drawable1</item><!--iOS-->
+        <item>@drawable/drawable1</item><!--IPv4-->
+        <item>@drawable/drawable1</item><!--IPv6-->
+        <item>@drawable/drawable1</item><!--LAN-->
+        <item>@drawable/drawable1</item><!--Linux-->
+        <item>@drawable/drawable1</item><!--OS-->
+        <item>@drawable/drawable1</item><!--SaaS-->
+        <item>@drawable/drawable1</item><!--SSD-->
+        <item>@drawable/drawable1</item><!--SSL-->
+        <item>@drawable/drawable1</item><!--TCP/IP-->
+        <item>@drawable/drawable1</item><!--UNIX-->
+        <item>@drawable/drawable1</item><!--VR-->
+        <item>@drawable/drawable1</item><!--WAN-->
     </string-array>
 
     <!--日本語-->
     <string-array name="array_JapDrawable">
-        <item>@drawable/drawable1</item>
-        <item>@drawable/drawable2</item>
-        <item>@drawable/drawable3</item>
-        <item>@drawable/drawable4</item>
-        <item>@drawable/drawable5</item>
+        <item>@drawable/drawable2</item> <!--アウトソーシング-->
+        <item>@drawable/affiliate</item><!--アフィリエイト-->
+        <item>@drawable/applicationserver</item><!--アプリケーションサーバー-->
+        <item>@drawable/archive</item><!--アーカイブ-->
+        <item>@drawable/drawable2</item><!--イーサネット-->
+        <item>@drawable/internet</item><!--インターネット-->
+        <item>@drawable/drawable2</item><!--イノベーション-->
+        <item>@drawable/drawable2</item><!--エンコード-->
+        <item>@drawable/drawable2</item><!--オフショア-->
+        <item>@drawable/drawable2</item><!--クラウドコンピューティング-->
+        <item>@drawable/drawable2</item><!--仮想化-->
+        <item>@drawable/drawable2</item><!--仮想通貨-->
+        <item>@drawable/drawable2</item><!--機械学習-->
+        <item>@drawable/drawable2</item><!--クライアント-->
+        <item>@drawable/drawable2</item><!--クラウドファンディング-->
+        <item>@drawable/drawable2</item><!--クラスタ-->
+        <item>@drawable/drawable2</item><!--サーバ-->
+        <item>@drawable/drawable2</item><!--シングルサイオン-->
+        <item>@drawable/drawable2</item><!--ステークホルダ-->
+        <item>@drawable/drawable2</item><!--マイニング-->
+        <item>@drawable/drawable2</item><!--メモリ-->
+        <item>@drawable/drawable2</item><!--ネットワーク-->
+        <item>@drawable/drawable2</item><!--ユビキタス-->
     </string-array>
     <!-- ここまで画像の指定  -->
 
@@ -25,54 +58,51 @@
     <!-- ここからリスト文字列の設定  -->
     <string-array name="array_english">
         <item>AR</item>
+        <item>AI</item>
         <item>API</item>
         <item>CPU</item>
         <item>HDD</item>
         <item>HTML</item>
-        <item>hello_blank_fragment5</item>
-        <item>hello_blank_fragment6</item>
-        <item>hello_blank_fragment7</item>
-        <item>hello_blank_fragment8</item>
-        <item>hello_blank_fragment9</item>
-        <item>hello_blank_fragment10</item>
-        <item>hello_blank_fragment11</item>
-        <item>hello_blank_fragment</item>
-        <item>hello_blank_fragment1</item>
-        <item>hello_blank_fragment2</item>
-        <item>hello_blank_fragment3</item>
-        <item>hello_blank_fragment4</item>
-        <item>hello_blank_fragment5</item>
-        <item>hello_blank_fragment6</item>
-        <item>hello_blank_fragment7</item>
-        <item>hello_blank_fragment8</item>
-        <item>hello_blank_fragment9</item>
-        <item>hello_blank_fragment10</item>
-        <item>hello_blank_fragment11</item>
-        <item>hello_blank_fragment</item>
-        <item>hello_blank_fragment1</item>
-        <item>hello_blank_fragment2</item>
-        <item>hello_blank_fragment3</item>
-        <item>hello_blank_fragment4</item>
-        <item>hello_blank_fragment5</item>
-        <item>hello_blank_fragment6</item>
-        <item>hello_blank_fragment7</item>
-        <item>hello_blank_fragment8</item>
-        <item>hello_blank_fragment9</item>
-        <item>hello_blank_fragment10</item>
-        <item>hello_blank_fragment11</item>
+        <item>IoT</item>
+        <item>iOS</item>
+        <item>IPv4</item>
+        <item>IPv6</item>
+        <item>LAN</item>
+        <item>Linux</item>
+        <item>OS</item>
+        <item>SaaS</item>
+        <item>SSD</item>
+        <item>SSL</item>
+        <item>TCP/IP</item>
+        <item>UNIX</item>
+        <item>VR</item>
+        <item>WAN</item>
     </string-array>
 
     <string-array name="array_japanese">
-        <item>こんにちは</item>
-        <item>こんにちは1</item>
-        <item>こんにちは2</item>
-        <item>こんにちは3</item>
-        <item>こんにちは4</item>
-        <item>こんにちは5</item>
-        <item>こんにちは6</item>
-        <item>こんにちは7</item>
-        <item>こんにちは8</item>
-        <item>こんにちは9</item>
+        <item>アウトソーシング</item>
+        <item>アフィリエイト</item>
+        <item>アプリケーションサーバ</item>
+        <item>アーカイブ</item>
+        <item>イーサネット</item>
+        <item>インターネット</item>
+        <item>イノベーション</item>
+        <item>エンコード</item>
+        <item>オフショア</item>
+        <item>クラウドコンピューティング</item>
+        <item>仮想化</item>
+        <item>仮想通貨</item>
+        <item>機械学習</item>
+        <item>クライアント</item>
+        <item>クラウドファンディング</item>
+        <item>クラスタ</item>
+        <item>サーバ</item>
+        <item>シングルサインオン</item>
+        <item>ステークホルダ</item>
+        <item>マイニング</item>
+        <item>メモリ</item>
+        <item>ネットワーク</item>
+        <item>ユビキタス</item>
     </string-array>
 
     <!-- ここからリスト文字列の設定  -->

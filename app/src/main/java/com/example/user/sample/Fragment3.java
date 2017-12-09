@@ -30,18 +30,12 @@ public class Fragment3 extends Fragment {
             TypedArray typedArray = getResources().obtainTypedArray(R.array.array_EngDrawable);
             Drawable drawable = typedArray.getDrawable(selected);
             imageview.setImageDrawable(drawable);
+
         }catch(ArrayIndexOutOfBoundsException e){
             TextView error = (TextView)view.findViewById(R.id.error1);
             error.setText("画像が存在していません。ご問い合わせください。");
 
-    }
-
+        }
         return view;
-
-
     }
-
-
-
-
 }

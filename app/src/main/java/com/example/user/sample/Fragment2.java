@@ -17,6 +17,10 @@ import static com.example.user.sample.R.id.listView2;
 
 public class Fragment2 extends Fragment {
 
+/*----------宣言部----------*/
+
+/*----------宣言部/----------*/
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
@@ -24,14 +28,13 @@ public class Fragment2 extends Fragment {
         return inflater.inflate(R.layout.fragment_fragment2, null);
     }
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
 
         //リストアイテムのラベルを格納する ArrayListをインスタンス化
-        final ArrayList<String> labelList = new ArrayList<>();
+        final ArrayList<String>labelList = new ArrayList<>();
 
         //listをlistViewに結び付ける
         ListView lv = (ListView)view.findViewById(listView2);
@@ -55,9 +58,15 @@ public class Fragment2 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                MainActivity maActivity = (MainActivity) getActivity();
+
+                maActivity.setItemNum(position);
+
                 Fragment5 fg5 = new Fragment5();
                 Bundle bundle = new Bundle();
                 bundle.putInt("selected", position);
+                bundle.putString("tango", labelList.get(position));
+
                 fg5.setArguments(bundle);
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -70,13 +79,12 @@ public class Fragment2 extends Fragment {
                 /* 戻るボタンを押すと、一つ前のフラグメントに戻る */
                 transaction.addToBackStack(null);
                 transaction.commit();
-
+                /*メニューバーのボタン制御*/
+                maActivity.setScreenInformation(2);
+                maActivity.changeButton();
             }
         });
-
-
         //リストアイテムの間の区切り線を非表示にする
         lv.setDivider(null);
     }
-
 }
