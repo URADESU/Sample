@@ -6,7 +6,7 @@
     <string-array name="array_EngDrawable">
         <item>@drawable/ar</item><!--AR-->
         <item>@drawable/ai</item><!--AI-->
-        <item>@drawable/drawable1</item><!--API-->
+        <item>@drawable/api</item><!--API-->
         <item>@drawable/cpu</item><!--CPU-->
         <item>@drawable/hdd</item><!--HDD-->
         <item>@drawable/drawable1</item><!--HTML-->
