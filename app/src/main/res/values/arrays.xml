@@ -4,13 +4,13 @@
     <!-- ここから画像の指定  -->
     <!--英語-->
     <string-array name="array_EngDrawable">
-        <item>@drawable/drawable1</item><!--AR-->
+        <item>@drawable/ar</item><!--AR-->
         <item>@drawable/ai</item><!--AI-->
         <item>@drawable/drawable1</item><!--API-->
         <item>@drawable/cpu</item><!--CPU-->
-        <item>@drawable/drawable1</item><!--HDD-->
+        <item>@drawable/hdd</item><!--HDD-->
         <item>@drawable/drawable1</item><!--HTML-->
-        <item>@drawable/drawable1</item><!--IoT-->
+        <item>@drawable/iot</item><!--IoT-->
         <item>@drawable/drawable1</item><!--iOS-->
         <item>@drawable/drawable1</item><!--IPv4-->
         <item>@drawable/drawable1</item><!--IPv6-->
