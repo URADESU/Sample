@@ -11,14 +11,14 @@
         <item>@drawable/hdd</item><!--HDD-->
         <item>@drawable/drawable1</item><!--HTML-->
         <item>@drawable/iot</item><!--IoT-->
-        <item>@drawable/drawable1</item><!--iOS-->
-        <item>@drawable/drawable1</item><!--IPv4-->
+        <item>@drawable/ios</item><!--iOS-->
+        <item>@drawable/ip</item><!--IPv4,IPv6-->
         <item>@drawable/drawable1</item><!--IPv6-->
-        <item>@drawable/drawable1</item><!--LAN-->
+        <item>@drawable/lan</item><!--LAN-->
         <item>@drawable/drawable1</item><!--Linux-->
         <item>@drawable/drawable1</item><!--OS-->
         <item>@drawable/drawable1</item><!--SaaS-->
-        <item>@drawable/drawable1</item><!--SSD-->
+        <item>@drawable/ssd</item><!--SSD-->
         <item>@drawable/drawable1</item><!--SSL-->
         <item>@drawable/drawable1</item><!--TCP/IP-->
         <item>@drawable/drawable1</item><!--UNIX-->
@@ -35,13 +35,13 @@
         <item>@drawable/drawable2</item><!--イーサネット-->
         <item>@drawable/internet</item><!--インターネット-->
         <item>@drawable/drawable2</item><!--イノベーション-->
-        <item>@drawable/drawable2</item><!--エンコード-->
+        <item>@drawable/encorder</item><!--エンコード-->
         <item>@drawable/drawable2</item><!--オフショア-->
-        <item>@drawable/drawable2</item><!--クラウドコンピューティング-->
-        <item>@drawable/drawable2</item><!--仮想化-->
-        <item>@drawable/drawable2</item><!--仮想通貨-->
-        <item>@drawable/drawable2</item><!--機械学習-->
-        <item>@drawable/drawable2</item><!--クライアント-->
+        <item>@drawable/cloudservice</item><!--クラウドコンピューティング-->
+        <item>@drawable/kasouka</item><!--仮想化-->
+        <item>@drawable/kasoutsuka</item><!--仮想通貨-->
+        <item>@drawable/kikaigakusyu</item><!--機械学習-->
+        <item>@drawable/cliant</item><!--クライアント-->
         <item>@drawable/drawable2</item><!--クラウドファンディング-->
         <item>@drawable/drawable2</item><!--クラスタ-->
         <item>@drawable/drawable2</item><!--サーバ-->
