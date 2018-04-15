@@ -17,10 +17,6 @@ import static com.example.user.sample.R.id.listView2;
 
 public class Fragment2 extends Fragment {
 
-/*----------宣言部----------*/
-
-/*----------宣言部/----------*/
-
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,

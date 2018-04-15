@@ -15,15 +15,15 @@
         <item>@drawable/ip</item><!--IPv4,IPv6-->
         <item>@drawable/drawable1</item><!--IPv6-->
         <item>@drawable/lan</item><!--LAN-->
-        <item>@drawable/drawable1</item><!--Linux-->
+        <item>@drawable/linux</item><!--Linux-->
         <item>@drawable/drawable1</item><!--OS-->
         <item>@drawable/drawable1</item><!--SaaS-->
         <item>@drawable/ssd</item><!--SSD-->
-        <item>@drawable/drawable1</item><!--SSL-->
-        <item>@drawable/drawable1</item><!--TCP/IP-->
+        <item>@drawable/ssl</item><!--SSL-->
+        <item>@drawable/tcpip</item><!--TCP/IP-->
         <item>@drawable/drawable1</item><!--UNIX-->
-        <item>@drawable/drawable1</item><!--VR-->
-        <item>@drawable/drawable1</item><!--WAN-->
+        <item>@drawable/vr</item><!--VR-->
+        <item>@drawable/wan</item><!--WAN-->
     </string-array>
 
     <!--日本語-->
@@ -46,11 +46,11 @@
         <item>@drawable/drawable2</item><!--クラスタ-->
         <item>@drawable/drawable2</item><!--サーバ-->
         <item>@drawable/drawable2</item><!--シングルサイオン-->
-        <item>@drawable/drawable2</item><!--ステークホルダ-->
-        <item>@drawable/drawable2</item><!--マイニング-->
-        <item>@drawable/drawable2</item><!--メモリ-->
-        <item>@drawable/drawable2</item><!--ネットワーク-->
-        <item>@drawable/drawable2</item><!--ユビキタス-->
+        <item>@drawable/stakeholder</item><!--ステークホルダ-->
+        <item>@drawable/mining</item><!--マイニング-->
+        <item>@drawable/memory</item><!--メモリ-->
+        <item>@drawable/network</item><!--ネットワーク-->
+        <item>@drawable/yubikitasu</item><!--ユビキタス-->
     </string-array>
     <!-- ここまで画像の指定  -->
 
@@ -72,7 +72,7 @@
         <item>OS</item>
         <item>SaaS</item>
         <item>SSD</item>
-        <item>SSL</item>
+        <item>TLS</item>
         <item>TCP/IP</item>
         <item>UNIX</item>
         <item>VR</item>
@@ -110,35 +110,110 @@
 
     <!--以下、ダイアログ内のアイテム-->
 
-    <!--タイトル-->
-    <!--英語-->
-    <string-array name="ArrayEngTitle">
-        <item>AR</item>
-        <item>API</item>
-        <item>CPU</item>
-        <item>HDD</item>
-        <item>HTML</item>
-    </string-array>
-
     <!--内容-->
     <!--英語-->
     <string-array name="ArrayEngText">
         <item>拡張現実（かくちょうげんじつ、英: Augmented Reality、オーグメンティッド・リアリティ、AR）とは、人が知覚する現実環境をコンピュータにより拡張する技術、およびコンピュータにより拡張された現実環境そのものを指す言葉</item>
+        <item>人工知能（じんこうちのう、英: artificial intelligence、AI）とは、人工的にコンピューター上などで人間と同様の知能を実現させようという試み、あるいはそのための一連の基礎技術を指す。</item>
         <item>アプリケーションプログラミングインタフェース（API、英: Application Programming Interface）とは、ソフトウェアコンポーネントが互いにやりとりするのに使用するインタフェースの仕様である</item>
         <item>CPU（シーピーユー、英: Central Processing Unit）、中央処理装置（ちゅうおうしょりそうち）は、コンピュータにおける中心的な処理装置（プロセッサ）[1]。</item>
         <item>ハードディスクドライブ（英: hard disk drive, HDD）とは、磁性体を塗布した円盤を高速回転し、磁気ヘッドを移動することで、情報を記録し読み出す補助記憶装置の一種である。</item>
         <item>HyperText Markup Language（ハイパーテキスト マークアップ ランゲージ、HTML（エイチティーエムエル））は、ハイパーテキストを記述するためのマークアップ言語の1つである</item>
+        <item>モノのインターネット（英語: Internet of Things, IoT）とは、様々な「モノ（物）」がインターネットに接続され（単に繋がるだけではなく、モノがインターネットのように繋がる[1]）、情報交換することにより相互に制御する仕組みである[2][3]。</item>
+        <item>iOS（アイオーエス）は、アップルが開発・提供するオペレーティングシステム（組み込みプラットフォーム）である。iPhone、iPod touch、iPad各全モデルに搭載している。</item>
+        <item>Internet Protocol version 4（インターネットプロトコルバージョン4）、IPv4（アイピーブイ4）は、Internet Protocolの一種で、OSI参照モデルにおいてネットワーク層に位置付けられるプロトコルである。</item>
+        <item>Internet Protocol Version 6（インターネット プロトコル バージョン6）、IPv6（アイピーブイ6、アイピーバージョン6）は、Internet Protocolの一種で、OSI参照モデルにおいてネットワーク層に位置付けられるプロトコルである。</item>
+        <item>Local Area Network（ローカル・エリア・ネットワーク）とは、広くても一施設内程度の規模で用いられるコンピュータネットワークのこと。その頭文字をつづったLAN（ラン）と書かれる場合も多い。一般家庭、企業のオフィスや研究所、工場等で広く使用されている。</item>
+        <item>Linux（リナックス、他の読みは後述）は、UnixライクなOSカーネルであるLinuxカーネル、およびそれをカーネルとして周辺を整備したシステム（GNU/Linuxシステムも参照）。</item>
+        <item>オペレーティングシステム（英語: Operating System、OS、オーエス）とは、コンピュータのオペレーション（操作・運用・運転）のために、ソフトウェアの中でも基本的、中核的位置づけのシステムソフトウェアである。</item>
+        <item>SaaS（サース、Software as a Service）は、必要な機能を必要な分だけサービスとして利用できるようにしたソフトウェア（主にアプリケーションソフトウェア）もしくはその提供形態のこと。</item>
+        <item>ソリッドステートドライブ（英: solid state drive, SSD）とは記憶装置として半導体素子メモリを用いたストレージ（特に、ディスクドライブ）として扱うことのできるデバイスである。</item>
+        <item>Transport Layer Security（トランスポート・レイヤー・セキュリティ、TLS）は、インターネットなどのコンピュータネットワークにおいてセキュリティを要求される通信を行うためのプロトコルである。</item>
+        <item>インターネット・プロトコル・スイート（英: Internet protocol suite）は、インターネットおよびインターネットに接続する大多数の商用ネットワークで利用できる通信規約（通信プロトコル）一式である。</item>
+        <item>UNIX （ユニックス、Unix、英語発音: [júːniks][1]）は、コンピュータ用のマルチタスク・マルチユーザーのオペレーティングシステムの一種である。</item>
+        <item>バーチャルリアリティ（英: virtual reality）とは、現物・実物（オリジナル）ではないが機能としての本質は同じであるような環境を、ユーザの五感を含む感覚を刺激することにより理工学的に作り出す技術およびその体系。</item>
+        <item>Wide Area Network（ワイド・エリア・ネットワーク、略してWAN（ワン））は、LANやMANに比較して広い範囲（市街地を越え郊外、県外や国際の範囲）におよぶネットワークのこと。</item>
     </string-array>
 
+    <!--日本語-->
+    <string-array name = "ArrayJapaneseText">
+        <item>アウトソーシング（英語: outsourcing）あるいは外部委託（がいぶいたく）とは、従来は組織内部で行っていた、もしくは新規に必要なビジネスプロセスについて、それを独立した外部組織からサービスとして購入する契約である[1]。</item>
+        <item>成功報酬型広告（せいこうほうしゅうがたこうこく[1]）、アフィリエイト・マーケティング[2]、アフィニティ・プログラム[3]、アソシエイト・プログラム[4]、アフィリエイト・プログラム[5]とは、特にインターネットのWWW上における広告形態をさし、ある広告媒体のウェブサイトに設置された広告によってウェブサイトの閲覧者が広告主の商品あるいはサービス等を購入し、生じた利益に応じて広告媒体に客引きの成功報酬を与える一連の形態をさす用語。</item>
+        <item>アプリケーションサーバ（英: Application Server）は、ビジネスロジックなどを実装したアプリケーションソフトウェアを実行することを専門とするコンピュータネットワーク上のサーバコンピュータ、もしくはそのようなコンピュータ上でのアプリケーションの実行を管理補助するミドルウェアのこと。</item>
+        <item>アーカイブ (archive) とは、重要記録を保存・活用し、未来に伝達することをいう。日本では一般的に書庫や保存記録と訳されることが多いが、元来は公記録保管所、または公文書の保存所、履歴などを意味し、記録を保存しておく場所である（公文書館も参照のこと）。</item>
+        <item>イーサネット (Ethernet) はコンピューターネットワークの規格の1つで、世界中のオフィスや家庭で一般的に使用されている有線のLAN (Local Area Network) で最も使用されている技術規格で、OSI参照モデルの下位2つの層である物理層とデータリンク層に関して規定している。</item>
+        <item>インターネット（英: internet[注 1]）は、インターネット・プロトコル・スイートを使用し、複数のコンピュータネットワークを相互接続した、グローバルなシステムである。</item>
+        <item>イノベーション（英: innovation）とは、物事の「新結合」「新機軸」「新しい切り口」「新しい捉え方」「新しい活用法」（を創造する行為）のこと。</item>
+        <item>エンコード（英: encode）、符号化（ふごうか）とは、アナログ信号やデジタルデータに特定の方法で、後に元の（あるいは類似の）信号またはデータに戻せるような変換を加えることである。</item>
+        <item>オフショア(Offshore)は岸(shore)から離(off)れ海に流れる風、つまり「陸風」のこと。反対語は、「海風」を意味するオンショア(Onshore)(cf.海陸風)。転じて陸から離れた沖合や、本拠の外の海外のことをさす。</item>
+        <item>クラウドコンピューティング（英: cloud computing）とは、コンピュータネットワークをベースとしたコンピュータ資源の利用形態である[1]。</item>
+        <item>仮想化（英語: virtualization）とは、コンピュータのリソースを抽象化することである。</item>
+        <item>仮想通貨（かそうつうか、英語: virtual currency）は、法定通貨に対して特定の国家による価値の保証を持たない通貨のこと。</item>
+        <item>機械学習（きかいがくしゅう、英: machine learning）とは、人工知能における研究課題の一つで、人間が自然に行っている学習能力と同様の機能をコンピュータで実現しようとする技術・手法のことである。</item>
+        <item>クライアント（英: client）とは、依頼人・顧客・取引先の意。</item>
+        <item>クラウドファンディング（英語: Crowdfunding）とは、不特定多数の人が通常インターネット経由で他の人々や組織に財源の提供や協力などを行うことを指す、群衆（crowd）と資金調達（funding）を組み合わせた造語である[1][2]。</item>
+        <item>クラスター、クラスタ (cluster) は、複数台のコンピュータが相互接続された構成、またはその総体。</item>
+        <item>サーバあるいはサーバー（英: server）は、サービスを提供するコンピュータである。</item>
+        <item>シングルサインオン（英語：Single Sign-On、略称：SSO）は、一度のユーザ認証処理によって独立した複数のソフトウェアシステム上のリソースが利用可能になる特性である。</item>
+        <item>ステークホルダー（英: stakeholder）とは、企業・行政・NPO等の利害と行動に直接・間接的な利害関係を有する者を指す。</item>
+        <item>データマイニング（英語: Data mining）とは、統計学、パターン認識、人工知能等のデータ解析の技法を大量のデータに網羅的に適用することで知識を取り出す技術のことである。</item>
+        <item>記憶装置（きおくそうち）は、コンピュータが処理すべきデジタルデータをある期間[1]保持するのに使う、部品、装置、電子媒体の総称。「記憶」という語の一般的な意味にも対応する英語としてはメモリ（英: memory）である。</item>
+        <item>コンピュータネットワーク（英: computer network）は、複数のコンピュータを接続する技術。または、接続されたシステム全体。</item>
+        <item>ユビキタス (ubiquitous) は、遍在（いつでもどこでも存在すること）をあらわす言葉。</item>
+
+    </string-array>
 
 
     <!--URL-->
     <!--英語-->
     <string-array name="ArrayEngURL">
-        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
-        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
-        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
-        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
-        <item>https://ja.wikipedia.org/wiki/%E6%8B%A1%E5%BC%B5%E7%8F%BE%E5%AE%9F</item>
+        <item>https://ja.wikipedia.org/wiki/拡張現実</item>
+        <item>https://ja.wikipedia.org/wiki/人工知能</item>
+        <item>https://ja.wikipedia.org/wiki/アプリケーションプログラミングインタフェース</item>
+        <item>https://ja.wikipedia.org/wiki/CPU</item>
+        <item>https://ja.wikipedia.org/wiki/ハードディスクドライブ</item>
+        <item>https://ja.wikipedia.org/wiki/HyperText_Markup_Language</item>
+        <item>https://ja.wikipedia.org/wiki/モノのインターネット</item>
+        <item>https://ja.wikipedia.org/wiki/IOS_(アップル)</item>
+        <item>https://ja.wikipedia.org/wiki/IPv4</item>
+        <item>https://ja.wikipedia.org/wiki/IPv6</item>
+        <item>https://ja.wikipedia.org/wiki/Local_Area_Network</item>
+        <item>https://ja.wikipedia.org/wiki/Linux</item>
+        <item>https://ja.wikipedia.org/wiki/オペレーティングシステム</item>
+        <item>https://ja.wikipedia.org/wiki/SaaS</item>
+        <item>https://ja.wikipedia.org/wiki/ソリッドステートドライブ</item>
+        <item>https://ja.wikipedia.org/wiki/Transport_Layer_Security</item>
+        <item>https://ja.wikipedia.org/wiki/インターネット・プロトコル・スイート</item>
+        <item>https://ja.wikipedia.org/wiki/UNIX</item>
+        <item>https://ja.wikipedia.org/wiki/バーチャルリアリティ</item>
+        <item>https://ja.wikipedia.org/wiki/Wide_Area_Network</item>
     </string-array>
+
+    <!--日本語-->
+    <string-array name = "arrayJapaneseURL">
+        <item>https://ja.wikipedia.org/wiki/アウトソーシング</item>
+        <item>https://ja.wikipedia.org/wiki/成功報酬型広告</item>
+        <item>https://ja.wikipedia.org/wiki/アプリケーションサーバ</item>
+        <item>https://ja.wikipedia.org/wiki/アーカイブ</item>
+        <item>https://ja.wikipedia.org/wiki/イーサネット</item>
+        <item>https://ja.wikipedia.org/wiki/インターネット</item>
+        <item>https://ja.wikipedia.org/wiki/イノベーション</item>
+        <item>https://ja.wikipedia.org/wiki/エンコード</item>
+        <item>https://ja.wikipedia.org/wiki/オフショア_(曖昧さ回避)</item>
+        <item>https://ja.wikipedia.org/wiki/クラウドコンピューティング</item>
+        <item>https://ja.wikipedia.org/wiki/仮想化</item>
+        <item>https://ja.wikipedia.org/wiki/仮想通貨</item>
+        <item>https://ja.wikipedia.org/wiki/機械学習</item>
+        <item>https://ja.wikipedia.org/wiki/クライアント</item>
+        <item>https://ja.wikipedia.org/wiki/クラウドファンディング</item>
+        <item>https://ja.wikipedia.org/wiki/クラスター</item>
+        <item>https://ja.wikipedia.org/wiki/サーバ</item>
+        <item>https://ja.wikipedia.org/wiki/シングルサインオン</item>
+        <item>https://ja.wikipedia.org/wiki/ステークホルダー</item>
+        <item>https://ja.wikipedia.org/wiki/データマイニング</item>
+        <item>https://ja.wikipedia.org/wiki/記憶装置</item>
+        <item>https://ja.wikipedia.org/wiki/コンピュータネットワーク</item>
+        <item>https://ja.wikipedia.org/wiki/ユビキタス</item>
+    </string-array>
+
 </resources>

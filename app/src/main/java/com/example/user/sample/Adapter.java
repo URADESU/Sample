@@ -43,8 +43,16 @@ public class Adapter
 
     @Override
     public CharSequence getPageTitle(int position) {
+        String pageTitle;
+        if(position == 0){
+            pageTitle = "アルファベット";
+        }else if(position  == 1){
+            pageTitle = "日本語";
+        }else{
+            pageTitle = "ERROR";
+        }
 
-        return "Page " + position;
+        return pageTitle;
     }
 
     @Override

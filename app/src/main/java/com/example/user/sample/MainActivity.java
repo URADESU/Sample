@@ -30,6 +30,8 @@ import java.util.List;
 import static android.util.Log.d;
 import static android.view.View.GONE;
 
+//TODO 大文字、小文字を区別せずに検索がヒットするよう修正する
+
 public class MainActivity extends FragmentActivity {
 
     //ページの数だけ右左に画面
@@ -66,6 +68,17 @@ public class MainActivity extends FragmentActivity {
     //押下されたリストの番号
     private int itemNum;
 
+    //検索ヒットフラグ
+    private boolean hitFlg;
+    //検索ヒット時のインデックス番号を保持
+    private int hitItemNum;
+    //画面にどのページ(リスト)が表示されているか判断するフラグ
+    private boolean witchPageFlg;
+
+    String[] title;
+    String[] text;
+    String[] url;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,36 +90,66 @@ public class MainActivity extends FragmentActivity {
         //ViewPagerにアダプターをセット
         viewPager.setAdapter(currentAdapt);
 
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            /**　現在表示されているページのID(state)を取得し、処理を行う
+             * position = 0 : アルファベッド画面
+             * position = 1 : 日本語画面
+             */
+            @Override
+            public void onPageSelected(int position) {
+                if(position == 0){
+                    witchPageFlg = false;
+                    Log.d("","アルファベッド画面");
+                }else{
+                    witchPageFlg = true;
+                    Log.d("","日本語画面");
+                }
+            }
+
+            //↓使わない関数
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
         //Wikiボタン
         wiki = (ImageView) findViewById(R.id.wiki_button);
         wiki.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View view){
 
-                //リソースファイルから、ダイアログのタイトルを取得
-                String[] title = getResources().getStringArray(R.array.ArrayEngTitle);
-                String[] text = getResources().getStringArray(R.array.ArrayEngText);
-                String[] url = getResources().getStringArray(R.array.ArrayEngURL);
-
-                //TODO 日本語追加
-                ArrayList<TextView> arrayURL = new ArrayList<TextView>();
-                TextView hoge = new TextView(MainActivity.this);
-                hoge.setPadding(50,0,50,0);
-//                hoge = (TextView)findViewById(R.id.textURL);
-
-                for(int i = 0; i < url.length; i++){
-                    hoge.setAutoLinkMask(Linkify.WEB_URLS);
-                    hoge.setText(url[i]);
-                    arrayURL.add(hoge);
+                //検索ヒット時にリストとダイアログ内容の整合性をとる
+                if(hitFlg){
+                    itemNum = hitItemNum;
+                    hitFlg = false;         //ヒットフラグ初期化
                 }
 
+                //リソースファイルから、ダイアログの内容を取得
+                if(!witchPageFlg) {
+                    title = getResources().getStringArray(R.array.array_english);
+                    text = getResources().getStringArray(R.array.ArrayEngText);
+                    url = getResources().getStringArray(R.array.ArrayEngURL);
+                }else{
+                    title = getResources().getStringArray(R.array.array_japanese);
+                    text = getResources().getStringArray(R.array.ArrayJapaneseText);
+                    url = getResources().getStringArray(R.array.arrayJapaneseURL);
+                }
+
+                TextView hoge = new TextView(MainActivity.this);
+                hoge.setPadding(100,0,100,0);
+                hoge.setAutoLinkMask(Linkify.WEB_URLS);
+                hoge.setText(url[itemNum]);
                 //wikiダイアログ表示処理
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                 builder
                         .setTitle(title[itemNum])
                         .setMessage(text[itemNum] + "\n\n" + "URL")
-                        .setView(arrayURL.get(itemNum))
+                        .setView(hoge)
                         .setPositiveButton("閉じる", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 // ボタンをクリックしたときの動作
@@ -183,7 +226,7 @@ public class MainActivity extends FragmentActivity {
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.replace(R.id.contents3, srf).addToBackStack(null).commit();
 
-                        /*メニューバーのボタン制御*/
+                    /*メニューバーのボタン制御*/
                     setScreenInformation(1);
                     changeButton();
                 }
@@ -210,6 +253,8 @@ public class MainActivity extends FragmentActivity {
                 if (labelListEnglish.get(i).indexOf(s) != -1) {
                     matchList.add(labelListEnglish.get(i));
                     // 検索対象の初期表示ポジションを保持
+                    hitFlg = true;
+                    hitItemNum = i;
                     startPosition[a] = i;
                     a++;
                 }
@@ -219,6 +264,8 @@ public class MainActivity extends FragmentActivity {
                 if (labelListJapanese.get(i).indexOf(s) != -1) {
                     matchList.add(labelListJapanese.get(i));
                     // 検索対象の初期表示ポジションを保持
+                    hitFlg = true;
+                    hitItemNum = i;
                     startPosition[a] = i;
                     a++;
                 }
@@ -236,8 +283,8 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
-    public void onBackPressed(){
-        //TODO Activityが終了しないよう、コメントアウト中
+        public void onBackPressed(){
+        //TODO Activityが終了しないよう、コメントアウト
 //        super.onBackPressed();
 
         //検索バーを隠す
@@ -297,27 +344,6 @@ public class MainActivity extends FragmentActivity {
      */
     protected int getScreenInformation(){
         return screenInformation;
-    }
-
-    public Fragment getVisibleFragment(){
-        FragmentManager fragmentManager = MainActivity.this.getSupportFragmentManager();
-        List<Fragment> fragments = fragmentManager.getFragments();
-        for(Fragment fragment : fragments){
-            if(fragment != null && fragment.isVisible())
-
-                d("","リターンされました！");
-            return fragment;
-        }
-        return null;
-    }
-
-    void setSearchBarVisible(boolean flg){
-        if(flg){
-            mSearchView.requestFocus();
-            mSearchView.setIconified(false);
-        }else{
-
-        }
     }
 
     public void setItemNum(int num){
